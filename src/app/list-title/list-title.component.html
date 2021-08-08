@@ -1,0 +1,19 @@
+<div>
+    <h2>My Lists</h2>
+    <button class="add" (click)="onAddList()">+Add List</button>
+    <ul class="listNames">
+        <li *ngFor="let item of list" (click)="onSelect(item)">
+            <span class="lists"
+                >{{item.listName}}
+                <button (click)='onDelete(item)'>X</button>
+            </span>
+        </li>
+    </ul>
+</div>
+<app-selected-list [list]="selectedList"></app-selected-list>
+<div *ngIf="addList">
+    <h3>New List Name</h3>
+    <label for="listName">{{addList.listName}}</label>
+    <input id="name" [(ngModel)]="addList.listName" placeholder="List Name">
+    <button (click)='onCloseNewAddition()'>Add Item</button>
+</div>

@@ -1,0 +1,54 @@
+div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: space-between;
+    min-height: 25rem;
+}
+
+h2 {
+    border: 2px solid blue;
+    padding: 2px 0 2px 0;
+    width: 300px;
+    border-radius: 4px;
+}
+
+.listNames {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    list-style-type: none;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.add {
+    width: fit-content;
+}
+
+span.lists {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 4px;
+}
+
+.updateList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.listName {
+    flex: 1;
+    max-width: 40%;
+}
+
+.list {
+    flex: 1;
+}
