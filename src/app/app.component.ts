@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { List } from './listInterface';
+import { LISTOFLISTS } from './ListOfLists';
 
 @Component({
   selector: 'app-root',
