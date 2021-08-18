@@ -1,0 +1,14 @@
+<div class="updateList" >
+    <h3>Update List</h3>
+    <div class="listName">
+        <h4>
+            <input id="name" [(ngModel)]="subList.listName" placeholder="List Name">
+        </h4>
+    </div>
+    <div class="list">
+        <label for="list">{{subList.nestedList}}</label>
+        <input id="list" [(ngModel)]="subList.nestedList" placeholder="List">
+        <!-- Button below is trying to pass the value from the input field into the list.  Not working. -->
+        <!-- <button (click)='onAddListItem(subList.list)'>Add List Item</button> -->
+    </div>
+</div>

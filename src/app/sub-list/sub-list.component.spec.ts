@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectedListComponent } from './selected-list.component';
+import { SubListComponent } from './sub-list.component';
 
-describe('SelectedListComponent', () => {
-  let component: SelectedListComponent;
-  let fixture: ComponentFixture<SelectedListComponent>;
+describe('SubListComponent', () => {
+  let component: SubListComponent;
+  let fixture: ComponentFixture<SubListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectedListComponent ]
+      declarations: [ SubListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectedListComponent);
+    fixture = TestBed.createComponent(SubListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

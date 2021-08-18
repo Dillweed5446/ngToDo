@@ -6,6 +6,6 @@ import { LISTOFLISTS } from './ListOfLists';
 })
 export class ListServiceService {
   getMainList() { return LISTOFLISTS;}
-  
+
   constructor() { }
 }

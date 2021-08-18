@@ -2,7 +2,9 @@
     <h2>My Lists</h2>
     <button class="add" (click)="onAddList()">+Add List</button>
     <ul class="listNames">
-        <li *ngFor="let item of mainList" (click)="onSelect(item)">
+        <li *ngFor="let item of mainList"
+            (click)="onSelect(item)"
+            [class.selected]="item === selectedList">
             <span class="lists"
                 >{{item.listName}}
                 <button (click)='onDelete(item)'>X</button>
@@ -10,7 +12,9 @@
         </li>
     </ul>
 </div>
-<app-selected-list [list]="selectedList"></app-selected-list>
+<!-- I want to add onSelect() into the app-sub-list below, but how do
+    I pass the data (item in this case) into that component? -->
+<app-sub-list *ngIf="selectedList" [list]="selectedList"></app-sub-list>
 <div *ngIf="addList">
     <h3>New List Name</h3>
     <label for="listName">{{addList.listName}}</label>

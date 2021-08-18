@@ -38,13 +38,14 @@ type ToDoListCollection = ToDoListCollectionItem[];
 
 
 @Component({
-  selector: 'app-selected-list',
-  templateUrl: './selected-list.component.html',
-  styleUrls: ['./selected-list.component.css']
+  selector: 'app-sub-list',
+  templateUrl: './sub-list.component.html',
+  styleUrls: ['./sub-list.component.css']
 })
-export class SelectedListComponent implements OnInit {
-  @Input() list?: List = this.selectedList;
-  selectedList?: List;
+export class SubListComponent implements OnInit {
+  @Input() list?: List = this.subList;
+  subList?: List;
+
   /**
    * On Add List Item
    * ---
