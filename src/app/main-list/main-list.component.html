@@ -6,7 +6,7 @@
             (click)="onSelect(item)"
             [class.selected]="item === selectedList">
             <span class="lists"
-                >{{item.listName}}
+                >{{item.name}}
                 <button (click)='onDelete(item)'>X</button>
             </span>
         </li>
@@ -17,7 +17,7 @@
 <app-sub-list *ngIf="selectedList" [list]="selectedList"></app-sub-list>
 <div *ngIf="addList">
     <h3>New List Name</h3>
-    <label for="listName">{{addList.listName}}</label>
-    <input id="name" [(ngModel)]="addList.listName" placeholder="List Name">
+    <label for="name">{{addList.name}}</label>
+    <input id="name" [(ngModel)]="addList.name" placeholder="List Name">
     <button (click)='onCloseNewAddition()'>Add Item</button>
 </div>
