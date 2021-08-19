@@ -1,41 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { List } from '../listInterface';
-
-
-/**
- * The place where you specify the properties that a given list
- * item can potentially have.
- */
-interface ToDoListItem {
-  itemName: string;
-  nestedItems: ToDoListItem[];
-}
-
-// Here the list, is a simple array of known types.
-/**
- * By creating the list as an array of the items that are supposed to go
- * inside of it, rather than array of itself, it makes accessing the internal
- * properties of those items make sense to the compiler.
- *
- * Also, in the case of lists, if you have a list of lists, that gives you
- * the ability to have multiple names todo lists.
- * 
- * but then they need meta data to decsribe them, so it'd be more like
- */
-type ToDoList = ToDoListItem[]; 
-
-// Ref to actual to do list
-interface ToDoListCollectionItem {
-  name: string;
-  list: ToDoList;
-}
-
-// a list of the target item again, just like before with the list.
-type ToDoListCollection = ToDoListCollectionItem[];
-
-
-
-
+import { ToDoListItem, ToDoListCollectionItem, ToDoList } from '../listInterface';
+import { SubList } from '../sublist';
 
 @Component({
   selector: 'app-sub-list',
@@ -43,8 +8,11 @@ type ToDoListCollection = ToDoListCollectionItem[];
   styleUrls: ['./sub-list.component.css']
 })
 export class SubListComponent implements OnInit {
-  @Input() list?: List = this.subList;
-  subList?: List;
+  //@ts-ignore
+  @Input() list?: ToDoListCollectionItem = this.subList;
+  subList: ToDoListCollectionItem;
+  tertiaryList: ToDoListItem;
+  name = this.list?.name;
 
   /**
    * On Add List Item
@@ -63,13 +31,16 @@ export class SubListComponent implements OnInit {
      *     compiler will not take care of creating the scaffolding
      *     of a type for you.
      */
-    this.list?.nestedList.push(item)
+    this.tertiaryList?.nestedItems.push(item)
   }
 
   constructor() {
-    this.list = {
-      listName: '',
-      nestedList: []
+    this.subList = {
+      name: ''
+    };
+    this.tertiaryList = {
+      itemName: this.subList?.name,
+      nestedItems: []
     };
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListServiceService } from '../list-service.service';
-import { List } from '../listInterface';
+import { ToDoListCollection, ToDoListCollectionItem } from '../listInterface';
 @Component({
   selector: 'app-main-list',
   templateUrl: './main-list.component.html',
@@ -8,20 +8,20 @@ import { List } from '../listInterface';
   providers: [ListServiceService]
 })
 export class MainListComponent implements OnInit {
-  selectedList?: List;
-  addList?: List;
-  mainList: List[] = [];
+  selectedList?: ToDoListCollectionItem;
+  addList?: ToDoListCollectionItem;
+  mainList: ToDoListCollection = [];
 
   getMainList(): void {
     this.mainList = this.listService.getMainList()
   }
 
-  onSelect(list: List): void {
+  onSelect(list: ToDoListCollectionItem): void {
     this.selectedList = list;
   }
 
   onAddList(): void {
-    this.mainList.push({listName: '', nestedList: []});
+    this.mainList.push();
     this.addList = this.mainList[this.mainList.length -1];
   }
 
@@ -29,7 +29,7 @@ export class MainListComponent implements OnInit {
     this.addList = undefined;
   }
 
-  onDelete(list: List): void {
+  onDelete(list: ToDoListCollectionItem): void {
     this.mainList.splice(this.mainList.indexOf(list), 1)
   }
 

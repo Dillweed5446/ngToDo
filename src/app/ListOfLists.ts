@@ -1,9 +1,9 @@
-import { List } from './listInterface';
+import { ToDoListCollection } from './listInterface';
 
-export const LISTOFLISTS: List[] = [
-{listName: 'GroceryList', nestedList: []},
-{listName: 'Hiking List', nestedList: []},
-{listName: 'Yard Tool List', nestedList: []},
-{listName: 'Camping List', nestedList: []},
-{listName: 'Vacation List', nestedList: []}
+export const LISTOFLISTS: ToDoListCollection = [
+{name: 'GroceryList'},
+{name: 'Hiking List'},
+{name: 'Yard Tool List'},
+{name: 'Camping List'},
+{name: 'Vacation List'}
 ]
