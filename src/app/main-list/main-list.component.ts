@@ -13,17 +13,15 @@ export class MainListComponent implements OnInit {
 /**
 *  mainList dummy setup to keep it simple
 */
-  mainList: ToDoListCollection = [
-    {listName: 'GroceryList', listItems: ['milk', 'cheese', 'rice', 'steak']},
-    {listName: 'Hiking List', listItems: []},
-    {listName: 'Yard Tool List', listItems: []},
-    {listName: 'Camping List', listItems: []},
-    {listName: 'Vacation List', listItems: []}
-  ]
-  /**
-  *  mainList setup for when ListServiceService is fully configured
-  */
-  // mainList: ToDoListCollection = [{listName: '', listItems: []}];
+  // mainList: ToDoListCollection = [
+  //   {listName: 'GroceryList', listItems: ['milk', 'cheese', 'rice', 'steak']},
+  //   {listName: 'Hiking List', listItems: []},
+  //   {listName: 'Yard Tool List', listItems: []},
+  //   {listName: 'Camping List', listItems: []},
+  //   {listName: 'Vacation List', listItems: []}
+  // ]
+
+  mainList: ToDoListCollection = [{listName: '', listItems: []}];
 
   getMainList(): void {
     this.mainList = this.listService.getMainList()
@@ -38,7 +36,7 @@ export class MainListComponent implements OnInit {
   }
 
   addNewListName(value: string): void {
-    this.mainList.push({listName: value, listItems: []});
+    this.listService.createNewList(value)
     this.addList = false;
   }
 
@@ -55,10 +53,7 @@ export class MainListComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    /**
-    *  Use this when ListServiceService is fully
-    */
-    // this.getMainList()
+    this.getMainList()
   }
 
 }

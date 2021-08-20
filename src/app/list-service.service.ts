@@ -7,5 +7,9 @@ import { LISTOFLISTS } from './ListOfLists';
 export class ListServiceService {
   getMainList() { return LISTOFLISTS;}
 
+  createNewList(value: string): void {
+    LISTOFLISTS.push({listName: value, listItems: []});
+  }
+
   constructor() { }
 }
