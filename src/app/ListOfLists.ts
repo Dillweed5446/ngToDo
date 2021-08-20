@@ -1,9 +1,9 @@
 import { ToDoListCollection } from './listInterface';
 
 export const LISTOFLISTS: ToDoListCollection = [
-{name: 'GroceryList'},
-{name: 'Hiking List'},
-{name: 'Yard Tool List'},
-{name: 'Camping List'},
-{name: 'Vacation List'}
-]
+    {listName: 'GroceryList', listItems: ['milk', 'cheese', 'rice', 'steak']},
+    {listName: 'Hiking List', listItems: []},
+    {listName: 'Yard Tool List', listItems: []},
+    {listName: 'Camping List', listItems: []},
+    {listName: 'Vacation List', listItems: []}
+  ]

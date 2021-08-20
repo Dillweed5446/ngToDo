@@ -2,13 +2,24 @@
     <h3>Update List</h3>
     <div class="listName">
         <h4>
-           {{name}}
+           {{list.listName}}
         </h4>
+        <ul class="listItems">
+            <li *ngFor="let item of list.listItems"
+                >
+                <span class="items"
+                    >{{item}}
+                    <!-- <button (click)='onDelete(item)'>X</button> -->
+                </span>
+            </li>
+        </ul>
     </div>
-    <div class="list">
-        <label for="list">{{subList.list}}</label>
-        <input id="list" [(ngModel)]="subList.list" placeholder="List">
-        <!-- Button below is trying to pass the value from the input field into the list.  Not working. -->
-        <!-- <button (click)='onAddListItem(subList.list)'>Add List Item</button> -->
-    </div>
+    <!-- <div class="list">
+        <button (click)='onAddListItem(item)'>Add List Item</button>
+    </div> -->
+    <form (ngSubmit)="onAddListItem(newItem.value)" #form="ngForm" ngNativeValidate>
+        <input id="list" [(ngModel)]="item" name="List Item"
+        placeholder="List" type="text" required #newItem>
+    </form>
+
 </div>

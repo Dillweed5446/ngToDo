@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListServiceService } from '../list-service.service';
-import { ToDoListCollection, ToDoListCollectionItem } from '../listInterface';
+import { SingleToDoList, ToDoListCollection } from '../listInterface';
 @Component({
   selector: 'app-main-list',
   templateUrl: './main-list.component.html',
@@ -8,35 +8,57 @@ import { ToDoListCollection, ToDoListCollectionItem } from '../listInterface';
   providers: [ListServiceService]
 })
 export class MainListComponent implements OnInit {
-  selectedList?: ToDoListCollectionItem;
-  addList?: ToDoListCollectionItem;
-  mainList: ToDoListCollection = [];
+  selectedList?: SingleToDoList;
+  addList: boolean = false;
+/**
+*  mainList dummy setup to keep it simple
+*/
+  mainList: ToDoListCollection = [
+    {listName: 'GroceryList', listItems: ['milk', 'cheese', 'rice', 'steak']},
+    {listName: 'Hiking List', listItems: []},
+    {listName: 'Yard Tool List', listItems: []},
+    {listName: 'Camping List', listItems: []},
+    {listName: 'Vacation List', listItems: []}
+  ]
+  /**
+  *  mainList setup for when ListServiceService is fully configured
+  */
+  // mainList: ToDoListCollection = [{listName: '', listItems: []}];
 
   getMainList(): void {
     this.mainList = this.listService.getMainList()
   }
 
-  onSelect(list: ToDoListCollectionItem): void {
+  onSelect(list: SingleToDoList): void {
     this.selectedList = list;
   }
 
   onAddList(): void {
-    this.mainList.push();
-    this.addList = this.mainList[this.mainList.length -1];
+    this.addList = true;
   }
 
-  onCloseNewAddition(): void {
-    this.addList = undefined;
+  addNewListName(value: string): void {
+    this.mainList.push({listName: value, listItems: []});
+    this.addList = false;
   }
 
-  onDelete(list: ToDoListCollectionItem): void {
+  addListItem(newListItem: string): void{
+    this.selectedList?.listItems.push(newListItem);
+  }
+
+  onDelete(list: SingleToDoList): void {
     this.mainList.splice(this.mainList.indexOf(list), 1)
   }
 
-  constructor(private listService: ListServiceService) { }
+  constructor(
+    private listService: ListServiceService,
+    ) {}
 
   ngOnInit(): void {
-    this.getMainList()
+    /**
+    *  Use this when ListServiceService is fully
+    */
+    // this.getMainList()
   }
 
 }
